@@ -27,4 +27,8 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:name, :birthday, :hometown)
   end
+
+  def self.search(q)
+    Student.all.selcect { |s| s.name.include? q }
+  end
 end
